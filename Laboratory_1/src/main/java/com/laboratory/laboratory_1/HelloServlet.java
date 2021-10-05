@@ -1,6 +1,12 @@
 package com.laboratory.laboratory_1;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousFileChannel;
+import java.nio.channels.CompletionHandler;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
@@ -61,10 +67,11 @@ public class HelloServlet extends HttpServlet {
 
     public void writeSync(int value, String key) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/sdragoi/Desktop/repository.txt"))) {
-            Timestamp ts = Timestamp.from(Instant.now());
+
             synchronized (writer) {
                 for (int i = 0; i < value; i++) {
-                    writer.write(String.format("%s (%s) ", key, ts));
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    writer.write(String.format("%s (%s) ", key, timestamp));
                 }
             }
         } catch (IOException e) {
@@ -74,15 +81,17 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void writeAsync(int value, String key) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/sdragoi/Desktop/repository.txt"))) {
-            Timestamp ts = Timestamp.from(Instant.now());
-            for(int i = 0 ; i < value; i++) {
-                writer.write(String.format("%s (%s) ", key, ts));
+        Path path = Paths.get("C:/Users/sdragoi/Desktop/repository.txt");
+
+            try (AsynchronousFileChannel asyncChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE)) {
+                for(int i = 0 ; i < value; i++) {
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    String toWrite = String.format("%s (%s) ", key, timestamp);
+                    asyncChannel.write(ByteBuffer.wrap(toWrite.getBytes()), (long) i * toWrite.length() + 1);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
     }
 
     public void logInfo(HttpServletRequest request) {

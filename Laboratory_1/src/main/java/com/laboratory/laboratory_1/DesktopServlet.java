@@ -3,6 +3,7 @@ package com.laboratory.laboratory_1;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -15,12 +16,12 @@ public class DesktopServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String key = request.getParameter("key");
         int value = Integer.parseInt(request.getParameter("value"));
-        boolean mock = request.getParameter("mock") != null;
-        boolean sync = request.getParameter("sync") != null;
+        boolean mock = request.getParameter("mock").equals("True");
+        boolean sync = request.getParameter("sync").equals("True");
 
         if(mock) {
             PrintWriter out = response.getWriter();
-            out.println("Mesaj de confirmare");
+            out.println("Mesaj de confirmare!");
         }
         else {
             StringBuilder sb = new StringBuilder();

@@ -9,7 +9,7 @@
 </h1>
 <br/>
 
-<form action="DesktopServlet" method="post">
+<form action="hello-servlet" method="post">
     <label for="key">Key:</label>
     <input id="key" name="key" type="text">
     <br/>
