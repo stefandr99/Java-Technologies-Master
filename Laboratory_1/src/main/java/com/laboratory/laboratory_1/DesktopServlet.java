@@ -18,9 +18,10 @@ public class DesktopServlet extends HttpServlet {
         int value = Integer.parseInt(request.getParameter("value"));
         boolean mock = request.getParameter("mock").equals("True");
         boolean sync = request.getParameter("sync").equals("True");
-
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
         if(mock) {
-            PrintWriter out = response.getWriter();
+
             out.println("Mesaj de confirmare!");
         }
         else {
@@ -29,7 +30,6 @@ public class DesktopServlet extends HttpServlet {
             for (int i = 0; i < value; i++) {
                 sb.append(String.format("%s (%s) ", key, ts));
             }
-            PrintWriter out = response.getWriter();
             out.println(sb);
         }
 
