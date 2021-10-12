@@ -1,5 +1,6 @@
 package com.fii.laboratory_2.controllers;
 
+import com.fii.laboratory_2.listeners.CategoryListener;
 import com.fii.laboratory_2.models.Record;
 
 import javax.servlet.*;
@@ -30,10 +31,16 @@ public class RecordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String category = request.getParameter("category");
+
+        // invoke the listener method
+        if (category.equals("--"))
+            category = CategoryListener.getDefaultCategory();
         String key = request.getParameter("key");
         String value = request.getParameter("value");
 
         Record record = new Record(category, key, value);
+
+        addCookie(response, category);
 
         request.setAttribute("record", record);
         RequestDispatcher rd = request.getRequestDispatcher("BusinessServlet");
@@ -41,5 +48,10 @@ public class RecordController extends HttpServlet {
 
         request.setAttribute("action", "records");
         doGet(request, response);
+    }
+
+    private void addCookie(HttpServletResponse response, String category) {
+        Cookie cookie = new Cookie("category", category);
+        response.addCookie(cookie);
     }
 }

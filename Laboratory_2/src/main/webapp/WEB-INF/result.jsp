@@ -5,7 +5,7 @@
 <head>
     <title>Result</title>
 </head>
-<body>
+<body style="height:100vh; margin:0;">
 
   <table>
       <tr>
@@ -30,6 +30,6 @@
   <%
       request.setAttribute("action", "categories");
   %>
-  <a href="/Laboratory_2-1.0-SNAPSHOT">Back home</a>
+  <a href="/Laboratory_2-1.0-SNAPSHOT/">Back home</a>
 </body>
 </html>

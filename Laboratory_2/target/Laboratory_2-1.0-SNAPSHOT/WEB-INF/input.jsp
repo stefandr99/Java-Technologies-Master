@@ -14,6 +14,7 @@
     <label for="category">Category</label>
 
     <select name="category" id="category">
+        <option value="--">--</option>
         <%
             List<String> a= (List<String>)request.getAttribute("categories");
             for (String s : a) {
