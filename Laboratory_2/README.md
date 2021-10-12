@@ -1,4 +1,4 @@
-# Laboratory 1
+# Laboratory 2
 - I created a Business Servlet which on 'doGet' sets the attribute categories for the category select in input.jsp; the 'doPost' method adds an inserted record in the records list.
 - The Record Controller 'doGet' checks if there is an action in the request:
   - if not it is set on 'categories', in order to return the categories for the select input
