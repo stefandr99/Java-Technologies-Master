@@ -37,6 +37,11 @@
     <br/>
     <br/>
 
+    <img alt="" src="${pageContext.request.contextPath}/captcha">
+    <label for="captcha"></label>
+    <input id="captcha" name="captcha" type="text">
+    <br/>
+    <br/>
     <button type="submit" name="submit-btn" value="Submit">Submit</button>
 
 

@@ -40,14 +40,20 @@ public class RecordController extends HttpServlet {
 
         Record record = new Record(category, key, value);
 
-        addCookie(response, category);
+        String captcha = request.getParameter("captcha");
+        HttpSession session = request.getSession();
+        String sessionCaptcha = (String)session.getAttribute("captcha");
 
-        request.setAttribute("record", record);
-        RequestDispatcher rd = request.getRequestDispatcher("BusinessServlet");
-        rd.include(request,response);
+        //if(captcha.equals(sessionCaptcha)) {
+            addCookie(response, category);
 
-        request.setAttribute("action", "records");
-        doGet(request, response);
+            request.setAttribute("record", record);
+            RequestDispatcher rd = request.getRequestDispatcher("BusinessServlet");
+            rd.include(request, response);
+
+            request.setAttribute("action", "records");
+            doGet(request, response);
+        //}
     }
 
     private void addCookie(HttpServletResponse response, String category) {
