@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <div class="p-d-flex p-jc-center">
+        <div class="p-mr-2">Exam with name <b>${exam.name}</b> taking place on <b>${exam.date}</b>, having the duration <b>${exam.duration}</b> minutes has been successfully added.</div>
+        <h:commandButton action="#{examCheckbox.showExams}" id="showExams" value="Show exams" />
+        <h:commandButton action="#{examCheckbox.addStudentView}" id="addStudent" value="Add student" />
+    </div>
+</h:body>
+</html>

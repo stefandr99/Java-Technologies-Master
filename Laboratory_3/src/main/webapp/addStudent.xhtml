@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <div class="card">
+        <h:form>
+            <p:growl>
+                <p:autoUpdate/>
+            </p:growl>
+
+            <p:outputLabel for="name" value="Name"/>
+            <p:inputText id="name" value="#{student.name}"/>
+            <br/>
+            <br/>
+
+            <p:selectCheckboxMenu id="menu" value="#{student.exams.selectedExams}" label="Exams" style="width: 15rem"
+                                  filter="true" filterMatchMode="startsWith" panelStyle="width: 15rem" scrollHeight="250">
+                <f:selectItems value="#{student.exams.examList}"/>
+            </p:selectCheckboxMenu>
+            <br/>
+            <br/>
+            <h:commandButton action="#{student.addStudent}" id="addStudent" value="Submit" />
+        </h:form>
+    </div>
+</h:body>
+</html>

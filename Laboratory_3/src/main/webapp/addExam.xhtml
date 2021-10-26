@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <div class="card">
+        <h:form>
+            <p:outputLabel for="name" value="Name"/>
+            <p:inputText id="name" value="#{exam.name}"/>
+            <br/>
+            <br/>
+
+            <p:outputLabel for="examdate" value="Exam date"/>
+            <p:datePicker id="examdate" value="#{exam.date}" showTime="true"/>
+
+            <br/>
+            <br/>
+            <p:outputLabel for="duration" value="Duration"/>
+            <p:inputNumber id="duration" modifyValueOnWheel="false" value="#{exam.duration}" />
+
+            <br/>
+            <br/>
+            <h:commandButton action="#{exam.addExam}" id="abc" value="Submit" />
+        </h:form>
+    </div>
+</h:body>
+</html>

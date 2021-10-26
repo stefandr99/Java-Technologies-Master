@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>
+        <from-view-id>/addExam.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{exam.addExam}</from-action>
+            <from-outcome>successAddedExam</from-outcome>
+            <to-view-id>/successAddedExam.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/successAddedExam.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{examCheckbox.showExams}</from-action>
+            <from-outcome>showExams</from-outcome>
+            <to-view-id>/showExams.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{student.addStudentView}</from-action>
+            <from-outcome>addStudentView</from-outcome>
+            <to-view-id>/addStudent.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>
