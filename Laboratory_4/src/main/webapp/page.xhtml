@@ -15,7 +15,7 @@
         <ui:include src="templates/header.xhtml"></ui:include>
     </ui:insert>
 
-    <!--<ui:composition template="/templates/dataView.xhtml">
+    <ui:composition template="/templates/dataView.xhtml">
         <ui:define name="dataViewContent">
             <h:dataTable value="#{example.examples}" var="ex" >
                 <h:column>
@@ -24,14 +24,14 @@
                 </h:column>
             </h:dataTable>
         </ui:define>
-    </ui:composition> -->
+    </ui:composition>
 
-    <!--<h:form>
+    <h:form>
         <my:selectComponent
                 selectLabel = "Select a name: "
                 selectedLabel = "#{example.selectedExample}"
                 selectValues = "#{example.examples}"/>
-    </h:form>-->
+    </h:form>
 
     <p:poll interval="3" update="counter" />
     <h:outputText id="counter" value="Number of active sessions: #{sessionCounter.totalSessionCount}" />
