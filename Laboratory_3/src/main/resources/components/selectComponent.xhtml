@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name = "selectLabel" />
+        <composite:attribute name = "selectedLabel" />
+        <composite:attribute name = "selectValues" />
+    </composite:interface>
+
+    <composite:implementation>
+        <h:form>
+            <p:outputLabel for="select" value="#{cc.attrs.selectLabel}"/>
+            <p:selectOneMenu id="option" value="#{cc.attrs.selectedLabel}">
+                <f:selectItems value="#{cc.attrs.selectValues}"/>
+            </p:selectOneMenu>
+        </h:form>
+    </composite:implementation>
+
+</html>

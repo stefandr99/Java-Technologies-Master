@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <link rel="stylesheet" href="style/style.css"/>
+</h:head>
+
+<h:body>
+    <ui:insert name="menuBar">
+        <ui:include src="templates/menuBar.xhtml"></ui:include>
+    </ui:insert>
+    <ui:insert name="headerTitle">
+        <ui:include src="templates/header.xhtml"></ui:include>
+    </ui:insert>
+
+    <!--<ui:composition template="/templates/dataView.xhtml">
+        <ui:define name="dataViewContent">
+            <h:dataTable value="#{example.examples}" var="ex" >
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{ex}
+                </h:column>
+            </h:dataTable>
+        </ui:define>
+    </ui:composition> -->
+
+    <!--<h:form>
+        <my:selectComponent
+                selectLabel = "Select a name: "
+                selectedLabel = "#{example.selectedExample}"
+                selectValues = "#{example.examples}"/>
+    </h:form>-->
+
+    <p:poll interval="3" update="counter" />
+    <h:outputText id="counter" value="Number of active sessions: #{sessionCounter.totalSessionCount}" />
+
+    <ui:insert name="footer">
+        <ui:include src="templates/footer.xhtml"></ui:include>
+    </ui:insert>
+</h:body>
+
+</html>

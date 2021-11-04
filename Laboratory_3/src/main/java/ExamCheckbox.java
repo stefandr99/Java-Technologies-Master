@@ -4,14 +4,19 @@ import javax.faces.bean.RequestScoped;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "examCheckbox")
-@RequestScoped
 public class ExamCheckbox {
     private Exam[] selectedExams;
 
     private List<Exam> examList;
+
+    public ExamCheckbox() {
+        this.selectedExams = new Exam[]{};
+        this.examList = new ArrayList<>();
+    }
 
     public Exam[] getSelectedExams() {
         return selectedExams;
@@ -32,10 +37,10 @@ public class ExamCheckbox {
     private void populateExams() {
         try(Connection conn = DbConnection.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT name, data, duration FROM exams"))
+            ResultSet rs = stmt.executeQuery("SELECT id, name, data, duration FROM exams"))
         {
             while(rs.next()){
-                Exam exam = new Exam(rs.getString("name"), rs.getDate("data"), rs.getInt("duration"));
+                Exam exam = new Exam(rs.getInt("id"), rs.getString("name"), rs.getDate("data"), rs.getInt("duration"));
                 examList.add(exam);
             }
         } catch (Exception e) {

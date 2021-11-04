@@ -30,7 +30,7 @@ public class Student {
             ResultSet rs = stmt.executeQuery("SELECT id, name, data, duration FROM exams"))
         {
             while(rs.next()){
-                Exam exam = new Exam(rs.getString("name"), rs.getDate("data"), rs.getInt("duration"));
+                Exam exam = new Exam(rs.getInt("id"), rs.getString("name"), rs.getDate("data"), rs.getInt("duration"));
                 exams.getExamList().add(exam);
             }
         } catch (Exception e) {

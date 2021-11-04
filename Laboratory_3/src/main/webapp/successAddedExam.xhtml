@@ -7,9 +7,12 @@
       xmlns:p="http://primefaces.org/ui">
 <h:body>
     <div class="p-d-flex p-jc-center">
+        <h:form>
         <div class="p-mr-2">Exam with name <b>${exam.name}</b> taking place on <b>${exam.date}</b>, having the duration <b>${exam.duration}</b> minutes has been successfully added.</div>
+        <p:commandButton action="addExam" id="addExam" value="Back" />
         <h:commandButton action="#{examCheckbox.showExams}" id="showExams" value="Show exams" />
-        <h:commandButton action="#{examCheckbox.addStudentView}" id="addStudent" value="Add student" />
+        <h:commandButton action="#{student.addStudentView}" id="addStudent" value="Add student" />
+        </h:form>
     </div>
 </h:body>
 </html>

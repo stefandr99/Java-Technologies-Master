@@ -9,20 +9,28 @@
             <from-action>#{exam.addExam}</from-action>
             <from-outcome>successAddedExam</from-outcome>
             <to-view-id>/successAddedExam.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/successAddedExam.xhtml</from-view-id>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>addExam</from-outcome>
+            <to-view-id>/addExam.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
         <navigation-case>
             <from-action>#{examCheckbox.showExams}</from-action>
             <from-outcome>showExams</from-outcome>
             <to-view-id>/showExams.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-action>#{student.addStudentView}</from-action>
             <from-outcome>addStudentView</from-outcome>
             <to-view-id>/addStudent.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 

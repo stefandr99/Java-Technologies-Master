@@ -17,7 +17,8 @@ public class Exam implements Serializable {
     public Exam() {
     }
 
-    public Exam(String name, Date date, int duration) {
+    public Exam(int id, String name, Date date, int duration) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.duration = duration;
