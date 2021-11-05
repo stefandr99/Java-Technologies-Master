@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>All students</title>
+</h:head>
+
+<h:body>
+   <h2>Students</h2>
+
+   <p:dataTable value="#{studentController.students}" var="studentRow">
+      <p:column headerText="Id">
+         <h:outputText value="#{studentRow.id}" />
+      </p:column>
+      <p:column headerText="Name">
+         <h:outputText value="#{studentRow.name}" />
+      </p:column>
+      <p:column headerText="Exams">
+         <p:orderList style="height: 120px; !important;" value="#{studentRow.exams}" var="exam" controlsLocation="none" itemLabel="#{exam}" itemValue="#{exam}" />
+      </p:column>
+   </p:dataTable>
+
+   <h:form>
+      <p:commandButton type="submit" value="Add an exam" action="addExam" />
+      <p:commandButton type="submit" value="Add a student" action="addStudent" />
+   </h:form>
+</h:body>
+</html>

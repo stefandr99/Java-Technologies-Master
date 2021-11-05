@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+   <p:card style="width: 30em">
+      <f:facet name="title">
+         Add a new student
+      </f:facet>
+      <f:facet name="subtitle">
+         Student details
+      </f:facet>
+
+      <h:form>
+         <h3>Name</h3>
+         <span class="ui-float-label">
+               <p:inputText id="name-input" value="#{studentController.student.name}"/>
+               <p:outputLabel for="@previous" value="Name"/>
+            </span>
+
+         <h3>Exams</h3>
+         <p:selectCheckboxMenu id="menu" value="#{studentController.assignedExams}" label="Exams" style="width: 15rem"
+                               filter="true" filterMatchMode="startsWith" panelStyle="width: 27rem" scrollHeight="250">
+            <f:selectItems value="#{examController.exams}"/>
+         </p:selectCheckboxMenu>
+
+         <br/>
+         <br/>
+         <p:commandButton icon="pi pi-check" type="submit" value="Add" action="#{studentController.addStudent}" />
+         <p:commandButton type="submit" value="Show Exams" action="showExams" />
+      </h:form>
+   </p:card>
+</h:body>
+</html>

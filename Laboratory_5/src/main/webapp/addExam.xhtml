@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:card style="width: 25em">
+        <f:facet name="title">
+            Add a new exam
+        </f:facet>
+        <f:facet name="subtitle">
+            Exam details
+        </f:facet>
+
+        <h:form>
+            <h3>Name</h3>
+            <span class="ui-float-label">
+               <p:inputText id="name-input" value="#{examController.exam.name}"/>
+               <p:outputLabel for="@previous" value="Name"/>
+            </span>
+
+            <h3>Date</h3>
+            <div class="p-field p-col-12 p-md-4">
+                <p:datePicker id="basic" value="#{examController.exam.data}" showTime="true" />
+            </div>
+
+            <h3>Duration</h3>
+            <span class="ui-float-label">
+               <p:inputNumber id="duration-input" value="#{examController.exam.duration}"/>
+            </span>
+
+            <br/>
+            <p:commandButton icon="pi pi-check" type="submit" value="Add" action="#{examController.addExam}" />
+            <p:commandButton type="submit" value="Add a student" action="addStudent" />
+            <p:commandButton type="submit" value="Show students" action="showStudents" />
+        </h:form>
+    </p:card>
+</h:body>
+</html>
