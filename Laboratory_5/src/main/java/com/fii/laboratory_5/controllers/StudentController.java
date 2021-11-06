@@ -1,6 +1,5 @@
 package com.fii.laboratory_5.controllers;
 
-import com.fii.laboratory_5.entities.Exam;
 import com.fii.laboratory_5.entities.Student;
 import com.fii.laboratory_5.repositories.ExamRepository;
 import com.fii.laboratory_5.repositories.StudentRepository;
@@ -10,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RequestScoped
 @Named
@@ -25,7 +23,9 @@ public class StudentController {
 
     Student student;
 
-    String[] assignedExams;
+    String[] writtenAssignedExams;
+
+    String[] projectAssignedExams;
 
     String selectedExam;
 
@@ -51,12 +51,12 @@ public class StudentController {
         this.selectedExam = selectedExam;
     }
 
-    public String[] getAssignedExams() {
-        return assignedExams;
+    public String[] getWrittenAssignedExams() {
+        return writtenAssignedExams;
     }
 
-    public void setAssignedExams(String[] assignedExams) {
-        this.assignedExams = assignedExams;
+    public void setWrittenAssignedExams(String[] writtenAssignedExams) {
+        this.writtenAssignedExams = writtenAssignedExams;
     }
 
     public Student getStudent() {
@@ -67,8 +67,16 @@ public class StudentController {
         this.student = student;
     }
 
+    public String[] getProjectAssignedExams() {
+        return projectAssignedExams;
+    }
+
+    public void setProjectAssignedExams(String[] projectAssignedExams) {
+        this.projectAssignedExams = projectAssignedExams;
+    }
+
     public String addStudent() {
-        studentRepository.create(student, assignedExams);
+        studentRepository.create(student, writtenAssignedExams, projectAssignedExams);
 
         return "showStudents";
     }

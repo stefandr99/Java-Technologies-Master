@@ -8,23 +8,47 @@
     </h:head>
 
     <h:body>
-        <h2>Exams</h2>
+        <h2>Written exams</h2>
 
-        <p:dataTable value="#{examController.exams}" var="examRow">
+        <p:dataTable value="#{genericExamController.writtenExams}" var="examRowWritten">
             <p:column headerText="Id">
-                <h:outputText value="#{examRow.id}" />
+                <h:outputText value="#{examRowWritten.id}" />
             </p:column>
             <p:column headerText="Name">
-                <h:outputText value="#{examRow.name}" />
+                <h:outputText value="#{examRowWritten.name}" />
             </p:column>
             <p:column headerText="Date">
-                <h:outputText value="#{examRow.data}" />
+                <h:outputText value="#{examRowWritten.data}" />
             </p:column>
             <p:column headerText="Duration">
-                <h:outputText value="#{examRow.duration} minutes" />
+                <h:outputText value="#{examRowWritten.duration} minutes" />
+            </p:column>
+            <p:column headerText="Pages">
+                <h:outputText value="#{examRowWritten.pages} pages" />
             </p:column>
         </p:dataTable>
 
+        <h2>Project exams</h2>
+
+        <p:dataTable value="#{genericExamController.projectExams}" var="examRowProject">
+            <p:column headerText="Id">
+                <h:outputText value="#{examRowProject.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{examRowProject.name}" />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputText value="#{examRowProject.data}" />
+            </p:column>
+            <p:column headerText="Duration">
+                <h:outputText value="#{examRowProject.duration} minutes" />
+            </p:column>
+            <p:column headerText="Bibliography">
+                <h:outputText value="#{examRowProject.bibliography}" />
+            </p:column>
+        </p:dataTable>
+
+        <br/>
         <h:form>
             <p:commandButton type="submit" value="Add an exam" action="addExam" />
             <p:commandButton type="submit" value="Add a student" action="addStudent" />

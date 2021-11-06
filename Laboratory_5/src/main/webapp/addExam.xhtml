@@ -7,7 +7,7 @@
 </h:head>
 
 <h:body>
-    <p:card style="width: 25em">
+    <p:card style="width: 45em">
         <f:facet name="title">
             Add a new exam
         </f:facet>
@@ -18,22 +18,43 @@
         <h:form>
             <h3>Name</h3>
             <span class="ui-float-label">
-               <p:inputText id="name-input" value="#{examController.exam.name}"/>
+               <p:inputText id="name-input" value="#{genericExamController.exam.name}"/>
                <p:outputLabel for="@previous" value="Name"/>
             </span>
 
             <h3>Date</h3>
             <div class="p-field p-col-12 p-md-4">
-                <p:datePicker id="basic" value="#{examController.exam.data}" showTime="true" />
+                <p:datePicker id="basic" value="#{genericExamController.exam.data}" showTime="true" />
             </div>
 
             <h3>Duration</h3>
             <span class="ui-float-label">
-               <p:inputNumber id="duration-input" value="#{examController.exam.duration}"/>
+               <p:inputNumber id="duration-input" value="#{genericExamController.exam.duration}"/>
             </span>
+            <br/>
+
+            <p:splitter style="height: 170px" styleClass="p-mb-2">
+                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center">
+                    <h3>Pages</h3>
+                    <span class="ui-float-label">
+                        <p:inputNumber id="pages-input" value="#{genericExamController.writtenExam.pages}"/>
+                    </span>
+                    <br/>
+                    <p:commandButton icon="pi pi-check" type="submit" value="Add written exam" action="#{genericExamController.addWrittenExam}" />
+                </p:splitterPanel>
+                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center">
+                    <h3>Bibliography</h3>
+                    <span class="ui-float-label">
+                        <p:inputText id="bibliography-input" value="#{genericExamController.projectExam.bibliography}"/>
+                    </span>
+                    <br/>
+                    <p:commandButton icon="pi pi-check" type="submit" value="Add project exam" action="#{genericExamController.addProjectExam}" />
+                </p:splitterPanel>
+            </p:splitter>
+
 
             <br/>
-            <p:commandButton icon="pi pi-check" type="submit" value="Add" action="#{examController.addExam}" />
+            <p:commandButton type="submit" value="Show exams" action="showExams" />
             <p:commandButton type="submit" value="Add a student" action="addStudent" />
             <p:commandButton type="submit" value="Show students" action="showStudents" />
         </h:form>

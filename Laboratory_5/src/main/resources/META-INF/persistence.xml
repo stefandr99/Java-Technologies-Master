@@ -2,8 +2,10 @@
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <!-- Define Persistence Unit -->
   <persistence-unit name="my_persistence_unit">
-    <class>com.fii.laboratory_5.entities.Exam</class>
+    <!--<class>com.fii.laboratory_5.entities.Exam</class>-->
     <class>com.fii.laboratory_5.entities.Student</class>
+    <class>com.fii.laboratory_5.entities.ProjectExam</class>
+    <class>com.fii.laboratory_5.entities.WrittenExam</class>
   </persistence-unit>
   <persistence-unit name="com.jpaPU" transaction-type="JTA">
     <jta-data-source>jdbc/Laboratory5</jta-data-source>

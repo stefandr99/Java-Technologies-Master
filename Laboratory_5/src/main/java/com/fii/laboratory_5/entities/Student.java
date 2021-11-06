@@ -4,11 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "students")
-@NamedQuery(name = "Student.all", query = "select st from Student st join st.exams ex")
+@NamedQuery(name = "Student.all", query = "select st from Student st join st.writtenExams ex join st.projectExams prex")
 public class Student implements Serializable {
     private final static long serialVersionUID = 1L;
 
@@ -21,13 +20,20 @@ public class Student implements Serializable {
     private String name;
 
     @ManyToMany
-    @JoinTable( name = "schedule",
+    @JoinTable( name = "writtenschedule",
             joinColumns = @JoinColumn(name = "studentid"),
             inverseJoinColumns = @JoinColumn(name = "examid") )
-    private List<Exam> exams;
+    private List<WrittenExam> writtenExams;
+
+    @ManyToMany
+    @JoinTable( name = "projectschedule",
+            joinColumns = @JoinColumn(name = "studentid"),
+            inverseJoinColumns = @JoinColumn(name = "examid") )
+    private List<ProjectExam> projectExams;
 
     public Student() {
-        exams = new ArrayList<>();
+        writtenExams = new ArrayList<>();
+        projectExams = new ArrayList<>();
     }
 
     public Student(String name) {
@@ -50,11 +56,19 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public List<Exam> getExams() {
-        return exams;
+    public List<WrittenExam> getWrittenExams() {
+        return writtenExams;
     }
 
-    public void setExams(List<Exam> exams) {
-        this.exams = exams;
+    public void setWrittenExams(List<WrittenExam> exams) {
+        this.writtenExams = exams;
+    }
+
+    public List<ProjectExam> getProjectExams() {
+        return projectExams;
+    }
+
+    public void setProjectExams(List<ProjectExam> projectExams) {
+        this.projectExams = projectExams;
     }
 }

@@ -17,14 +17,18 @@
       <p:column headerText="Name">
          <h:outputText value="#{studentRow.name}" />
       </p:column>
-      <p:column headerText="Exams">
-         <p:orderList style="height: 120px; !important;" value="#{studentRow.exams}" var="exam" controlsLocation="none" itemLabel="#{exam}" itemValue="#{exam}" />
+      <p:column headerText="Written exams">
+         <p:orderList style="height: 120px; !important;" value="#{studentRow.writtenExams}" var="exam" controlsLocation="none" itemLabel="#{exam}" itemValue="#{exam}" />
+      </p:column>
+      <p:column headerText="Project exams">
+         <p:orderList style="height: 120px; !important;" value="#{studentRow.projectExams}" var="projectExam" controlsLocation="none" itemLabel="#{projectExam}" itemValue="#{projectExam}" />
       </p:column>
    </p:dataTable>
 
    <h:form>
       <p:commandButton type="submit" value="Add an exam" action="addExam" />
       <p:commandButton type="submit" value="Add a student" action="addStudent" />
+      <p:commandButton type="submit" value="Show exams" action="showExams" />
    </h:form>
 </h:body>
 </html>

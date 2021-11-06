@@ -3,13 +3,14 @@ package com.fii.laboratory_5.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
-
+/*
 @Entity
 @Table(name = "exams")
 @NamedQueries({
         @NamedQuery(name = "Exam.all", query = "select ex from Exam ex order by ex.id"),
         @NamedQuery(name = "Exam.byName", query = "select ex from Exam ex where ex.name = :name")
-})
+})*/
+@MappedSuperclass
 public class Exam implements Serializable {
     private final static long serialVersionUID = 1L;
 
