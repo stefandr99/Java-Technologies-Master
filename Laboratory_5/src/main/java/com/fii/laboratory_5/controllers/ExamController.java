@@ -42,7 +42,7 @@ public class ExamController {
     }
 
     public String addExam() {
-        examRepository.create(exam);
+        examRepository.create(exam);    
 
         return "showExams";
     }
