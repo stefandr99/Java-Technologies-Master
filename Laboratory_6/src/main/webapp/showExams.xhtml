@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>All exams</title>
+    </h:head>
+
+    <h:body>
+        <h2>Written exams</h2>
+
+        <p:dataTable value="#{genericExamController.writtenExams}" var="examRowWritten">
+            <p:column headerText="Id">
+                <h:outputText value="#{examRowWritten.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{examRowWritten.name}" />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputText value="#{examRowWritten.data}" />
+            </p:column>
+            <p:column headerText="Duration">
+                <h:outputText value="#{examRowWritten.duration} minutes" />
+            </p:column>
+            <p:column headerText="Pages">
+                <h:outputText value="#{examRowWritten.pages} pages" />
+            </p:column>
+            <p:column headerText="Resources">
+                <p:orderList style="height: 120px; !important;" value="#{examRowWritten.resources}" var="writtenResource" controlsLocation="none" itemLabel="#{writtenResource}" itemValue="#{writtenResource}" />
+            </p:column>
+        </p:dataTable>
+
+        <h2>Project exams</h2>
+
+        <p:dataTable value="#{genericExamController.projectExams}" var="examRowProject">
+            <p:column headerText="Id">
+                <h:outputText value="#{examRowProject.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{examRowProject.name}" />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputText value="#{examRowProject.data}" />
+            </p:column>
+            <p:column headerText="Duration">
+                <h:outputText value="#{examRowProject.duration} minutes" />
+            </p:column>
+            <p:column headerText="Bibliography">
+                <h:outputText value="#{examRowProject.bibliography}" />
+            </p:column>
+            <p:column headerText="Resources">
+                <p:orderList style="height: 60px; !important;" value="#{examRowProject.resources}" var="projectResource" controlsLocation="none" itemLabel="#{projectResource}" itemValue="#{projectResource}" />
+            </p:column>
+        </p:dataTable>
+
+        <br/>
+        <h:form>
+            <p:commandButton type="submit" value="Add an exam" action="addExam?faces-redirect=true" />
+            <p:commandButton type="submit" value="Add a student" action="addStudent?faces-redirect=true" />
+        </h:form>
+    </h:body>
+</html>

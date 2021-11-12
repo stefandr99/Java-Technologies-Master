@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:card style="width: 45em">
+        <f:facet name="title">
+            Add a new exam
+        </f:facet>
+        <f:facet name="subtitle">
+            Exam details
+        </f:facet>
+
+        <h:form>
+            <h3>Name</h3>
+            <span class="ui-float-label">
+               <p:inputText id="name-input" value="#{genericExamController.exam.name}"/>
+               <p:outputLabel for="@previous" value="Name"/>
+            </span>
+
+            <h3>Date</h3>
+            <div class="p-field p-col-12 p-md-4">
+                <p:datePicker id="basic" value="#{genericExamController.exam.data}" showTime="true" />
+            </div>
+
+            <h3>Duration</h3>
+            <span class="ui-float-label">
+               <p:inputNumber id="duration-input" value="#{genericExamController.exam.duration}"/>
+            </span>
+
+            <h3>Resources</h3>
+            <p:selectCheckboxMenu id="resources" value="#{genericExamController.chosenResources}" label="Resources" style="width: 15rem"
+                                  filter="true" filterMatchMode="startsWith" panelStyle="width: 27rem" scrollHeight="250">
+                <f:selectItems value="#{genericExamController.resources}"/>
+            </p:selectCheckboxMenu>
+            <br/>
+            <br/>
+
+            <p:splitter style="height: 170px" styleClass="p-mb-2">
+                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center">
+                    <h3>Pages</h3>
+                    <span class="ui-float-label">
+                        <p:inputNumber id="pages-input" value="#{genericExamController.writtenExam.pages}"/>
+                    </span>
+                    <br/>
+                    <p:commandButton icon="pi pi-check" type="submit" value="Add written exam" action="#{genericExamController.addWrittenExam}" />
+                </p:splitterPanel>
+                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center">
+                    <h3>Bibliography</h3>
+                    <span class="ui-float-label">
+                        <p:inputText id="bibliography-input" value="#{genericExamController.projectExam.bibliography}"/>
+                    </span>
+                    <br/>
+                    <p:commandButton icon="pi pi-check" type="submit" value="Add project exam" action="#{genericExamController.addProjectExam}" />
+                </p:splitterPanel>
+            </p:splitter>
+
+
+            <br/>
+            <p:commandButton type="submit" value="Show exams" action="showExams?faces-redirect=true" />
+            <p:commandButton type="submit" value="Add a student" action="addStudent?faces-redirect=true" />
+            <p:commandButton type="submit" value="Show students" action="showStudents?faces-redirect=true" />
+        </h:form>
+    </p:card>
+</h:body>
+</html>
