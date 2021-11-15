@@ -5,15 +5,14 @@ import com.fii.laboratory_5.entities.ProjectExam;
 import com.fii.laboratory_5.entities.WrittenExam;
 
 import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.lang.reflect.ParameterizedType;
+import java.io.Serializable;
 import java.util.List;
 
 @Dependent
-public class GenericExamRepository<T> {
+public class GenericExamRepository<T> implements Serializable {
     @PersistenceContext(unitName = "com.jpaPU")
     private EntityManager em;
 

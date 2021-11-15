@@ -4,21 +4,29 @@ import com.fii.laboratory_5.entities.Exam;
 import com.fii.laboratory_5.entities.ProjectExam;
 import com.fii.laboratory_5.entities.WrittenExam;
 import com.fii.laboratory_5.repositories.GenericExamRepository;
+import com.fii.laboratory_5.search.ExamSearch;
+import com.fii.laboratory_5.search.SearchFields;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class GenericExamController {
+public class GenericExamController implements Serializable {
     @Inject
     GenericExamRepository<WrittenExam> writtenExamGenericExamRepository;
 
     @Inject
     GenericExamRepository<ProjectExam> projectExamGenericExamRepository;
+
+    @Inject
+    ExamSearch examSearch;
 
     private Exam exam;
 
@@ -30,6 +38,10 @@ public class GenericExamController {
 
     private ProjectExam projectExam;
 
+    private String search;
+
+    private String criteria;
+
     public GenericExamController() {
         this.exam = new Exam();
         this.writtenExams = new ArrayList<>();
@@ -38,8 +50,20 @@ public class GenericExamController {
         this.projectExam = new ProjectExam();
     }
 
+    public String searchExams() {
+        List<SearchFields> fields = new ArrayList<>();
+        if (criteria == null || criteria.isEmpty())
+            criteria = "name";
+
+        fields.add(new SearchFields(criteria, search));
+        writtenExams = examSearch.searchUser(fields);
+
+        return "showExams?faces-redirect=true";
+    }
+
     public List<WrittenExam> getWrittenExams() {
-        writtenExams = writtenExamGenericExamRepository.getWritten();
+        if(search == null || search.isEmpty())
+            writtenExams = writtenExamGenericExamRepository.getWritten();
 
         return writtenExams;
     }
@@ -94,5 +118,21 @@ public class GenericExamController {
 
     public void setExam(Exam exam) {
         this.exam = exam;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(String criteria) {
+        this.criteria = criteria;
     }
 }

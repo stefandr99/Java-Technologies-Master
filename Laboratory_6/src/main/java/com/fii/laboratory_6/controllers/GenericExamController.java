@@ -6,18 +6,23 @@ import com.fii.laboratory_6.entities.Resource;
 import com.fii.laboratory_6.entities.WrittenExam;
 import com.fii.laboratory_6.repositories.GenericExamRepository;
 import com.fii.laboratory_6.repositories.ResourceRespository;
+import com.fii.laboratory_6.search.ExamSearch;
+import com.fii.laboratory_6.search.SearchFields;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class GenericExamController {
+public class GenericExamController implements Serializable {
     @EJB
     GenericExamRepository<WrittenExam> writtenExamGenericExamRepository;
 
@@ -26,6 +31,9 @@ public class GenericExamController {
 
     @EJB
     ResourceRespository resourceRespository;
+
+    @Inject
+    ExamSearch examSearch;
 
     private Exam exam;
 
@@ -40,6 +48,10 @@ public class GenericExamController {
     private List<Resource> resources;
 
     private String[] chosenResources;
+
+    private String search;
+
+    private String criteria;
 
     public GenericExamController() {
         this.exam = new Exam();
@@ -72,8 +84,20 @@ public class GenericExamController {
         return "showExams?faces-redirect=true";
     }
 
+    public String searchExams() {
+        List<SearchFields> fields = new ArrayList<>();
+        if (criteria == null || criteria.isEmpty())
+            criteria = "name";
+
+        fields.add(new SearchFields(criteria, search));
+        writtenExams = examSearch.searchUser(fields);
+
+        return "showExams?faces-redirect=true";
+    }
+
     public List<WrittenExam> getWrittenExams() {
-        writtenExams = writtenExamGenericExamRepository.getWritten();
+        if(search == null || search.isEmpty())
+            writtenExams = writtenExamGenericExamRepository.getWritten();
 
         return writtenExams;
     }
@@ -131,5 +155,21 @@ public class GenericExamController {
 
     public void setChosenResources(String[] chosenResources) {
         this.chosenResources = chosenResources;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(String criteria) {
+        this.criteria = criteria;
     }
 }

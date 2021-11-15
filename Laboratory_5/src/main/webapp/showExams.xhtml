@@ -8,6 +8,19 @@
     </h:head>
 
     <h:body>
+        <h5>Search</h5>
+        <h:form>
+            <span class="ui-float-label">
+                <p:inputText id="float-input" value="#{genericExamController.search}"/>
+                <p:outputLabel for="@previous" value="Field"/>
+            </span>
+            <h5 class="p-mt-0">By</h5>
+            <p:selectOneRadio id="console" value="#{genericExamController.criteria}" unselectable="true">
+                <f:selectItem itemLabel="Name" itemValue="name"/>
+            </p:selectOneRadio>
+            <p:commandButton type="submit" value="Search" action="#{genericExamController.searchExams}" partialSubmit="true" ajax="true" />
+        </h:form>
+
         <h2>Written exams</h2>
 
         <p:dataTable value="#{genericExamController.writtenExams}" var="examRowWritten">

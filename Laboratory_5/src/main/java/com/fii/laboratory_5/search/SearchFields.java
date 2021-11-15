@@ -1,0 +1,31 @@
+package com.fii.laboratory_5.search;
+
+public class SearchFields {
+    private String key;
+
+    private String value;
+
+    public SearchFields() {
+    }
+
+    public SearchFields(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
