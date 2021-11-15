@@ -11,3 +11,5 @@
 - In every Controller is **injected** a repository
 - In every Repository is **injected** an EntityManager
 - In test folder is a test file where are unit tests which test my application logic 
+
+- In **search** folder I implemented the logic for searching written exams by name as a default criteria. Because I created a SearchField class, the search functionality could be extended. 
