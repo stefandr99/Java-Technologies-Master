@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+
+<h:body>
+    <p:card style="width: 30em">
+        <f:facet name="title">
+            Login
+        </f:facet>
+        <f:facet name="subtitle">
+            Enter your credentials
+        </f:facet>
+
+        <h:form>
+            <p:messages id="messages" globalOnly="true" />
+            <h3>Username</h3>
+            <span class="ui-float-label">
+               <p:inputText id="username-input" value="#{userController.user.username}"/>
+               <p:outputLabel for="@previous" value="Username"/>
+            </span>
+
+            <h3>Password</h3>
+            <span class="ui-float-label">
+               <p:inputText type="password" id="password-input" value="#{userController.user.password}"/>
+               <p:outputLabel for="@previous" value="Password"/>
+            </span>
+
+            <br/>
+            <br/>
+            <p:commandButton icon="pi pi-check" type="submit" value="Login" action="#{userController.execute}" />
+            <p:commandButton type="submit" value="Register" action="register?faces-redirect=true" />
+        </h:form>
+    </p:card>
+</h:body>
+</html>

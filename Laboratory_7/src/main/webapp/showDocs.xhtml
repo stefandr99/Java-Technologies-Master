@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>All documents</title>
+</h:head>
+
+<h:body>
+   <h2>Documents</h2>
+
+   <p:dataTable value="#{documentController.document2s}" var="docRow">
+      <p:column headerText="Id">
+         <h:outputText value="#{docRow.id}" />
+      </p:column>
+      <p:column headerText="Registration number">
+         <h:outputText value="#{docRow.registrationNumber}" />
+      </p:column>
+      <p:column headerText="Name">
+         <h:outputText value="#{docRow.name}" />
+      </p:column>
+      <p:column headerText="Author">
+         <h:outputText value="#{docRow.user.username}" />
+      </p:column>
+   </p:dataTable>
+
+   <h:form>
+      <p:commandButton type="submit" value="Add a new document" action="addDocument?faces-redirect=true" />
+   </h:form>
+</h:body>
+</html>

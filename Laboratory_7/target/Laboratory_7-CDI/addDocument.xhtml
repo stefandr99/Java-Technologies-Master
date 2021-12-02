@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:card style="width: 30em">
+        <f:facet name="title">
+            Submit a document
+        </f:facet>
+        <f:facet name="subtitle">
+            Interval for submissions: 09:00 - 22:00
+        </f:facet>
+
+        <h:form enctype="multipart/form-data">
+            <p:messages id="messages" globalOnly="true" />
+
+            <h3>Name</h3>
+            <span class="ui-float-label">
+               <p:inputText id="doc-name-input" value="#{documentController.documentName}"/>
+               <p:outputLabel for="@previous" value="Document name"/>
+            </span>
+
+            <h3>Upload</h3>
+            <p:fileUpload value="#{documentController.uploadedFile}" mode="simple" skinSimple="true"/>
+
+            <br/>
+            <br/>
+            <p:commandButton icon="pi pi-check" type="submit" value="Add" ajax="false" action="#{documentController.upload}" >
+                <f:ajax execute="@all" render="@form"/>
+            </p:commandButton>
+        </h:form>
+    </p:card>
+</h:body>
+</html>
