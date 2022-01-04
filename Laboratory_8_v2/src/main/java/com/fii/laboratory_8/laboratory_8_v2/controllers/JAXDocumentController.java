@@ -30,6 +30,21 @@ public class JAXDocumentController {
 
         return documents;
     }
+
+    @GET
+    @Path("/checkCircuit")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Document2> allWithCheck(@DefaultValue("-1") @QueryParam("userId") int userId) {
+        List<Document2> documents;
+
+        if(userId == -1)
+            documents = documentRepository.get();
+        else
+            documents = documentRepository.getByUserId(userId);
+
+        return documents;
+    }
+
 /*
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)

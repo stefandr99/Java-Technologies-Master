@@ -2,6 +2,7 @@ package com.fii.laboratory_8.laboratory_8_v2.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "documents2")
@@ -30,6 +31,12 @@ public class Document2 implements Serializable {
 
     @Column(name = "registration_number")
     private String RegistrationNumber;
+
+    @ManyToMany
+    @JoinTable( name = "bibliography",
+            joinColumns = @JoinColumn(name = "documentid"),
+            inverseJoinColumns = @JoinColumn(name = "referenceid") )
+    private List<Document2> bibliography;
 
     public Document2() {
     }
