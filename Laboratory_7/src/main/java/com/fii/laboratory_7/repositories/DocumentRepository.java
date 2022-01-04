@@ -27,4 +27,40 @@ public class DocumentRepository {
     public List<Document2> get() {
         return em.createNamedQuery("Document2.all", Document2.class).getResultList();
     }
+
+    public List<Document2> getByUserId(int userId) {
+        return em.createNamedQuery("Document2.byUserId", Document2.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
+
+    @Transactional
+    public boolean delete(int id) {
+        Long longId = (long) id;
+
+        Document2 document2 = em.find(Document2.class, longId);
+
+        if(document2 != null) {
+            em.remove(document2);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Transactional
+    public boolean update(int id, String name, String registrationNumber) {
+        Long longId = (long) id;
+        Document2 doc = em.find(Document2.class, longId);
+
+        if(doc != null) {
+            doc.setName(name);
+            doc.setRegistrationNumber(registrationNumber);
+
+            return true;
+        }
+
+        return false;
+    }
 }

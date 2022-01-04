@@ -7,7 +7,8 @@ import java.io.Serializable;
 @Table(name = "documents2")
 @NamedQueries({
         @NamedQuery(name = "Document2.all", query = "select doc from Document2 doc join doc.user us order by doc.id"),
-        @NamedQuery(name = "Document2.byName", query = "select doc from Document2 doc where doc.name = :name")
+        @NamedQuery(name = "Document2.byName", query = "select doc from Document2 doc where doc.name = :name"),
+        @NamedQuery(name = "Document2.byUserId", query = "select doc from Document2 doc join doc.user us where us.id = :userId")
 })
 public class Document2 implements Serializable {
     private final static long serialVersionUID = 1L;
@@ -37,6 +38,12 @@ public class Document2 implements Serializable {
         this.name = name;
         this.doc = bytes;
         this.user = user;
+        this.RegistrationNumber = registrationNumber;
+    }
+
+    public Document2(Long id, String name, String registrationNumber) {
+        this.id = id;
+        this.name = name;
         this.RegistrationNumber = registrationNumber;
     }
 
