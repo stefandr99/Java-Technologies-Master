@@ -19,7 +19,7 @@ public class CacheFilter implements ContainerResponseFilter {
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
-        if(containerRequestContext.getMethod().equals("GET")){
+        /*if(containerRequestContext.getMethod().equals("GET")){
             String id = containerRequestContext.getUriInfo().getQueryParameters().containsKey("userId") ?
                     containerRequestContext.getUriInfo().getQueryParameters().get("userId").get(0) : "-1";
 
@@ -30,6 +30,6 @@ public class CacheFilter implements ContainerResponseFilter {
             else {
                 documents.put(integerId, (List<Document2>) containerResponseContext.getEntity());
             }
-        }
+        }*/
     }
 }

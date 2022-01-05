@@ -1,5 +1,6 @@
 package com.fii.laboratory_8.laboratory_8_v2.repositories;
 
+import com.fii.laboratory_8.laboratory_8_v2.entities.Bibliography;
 import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
 
 import javax.persistence.EntityManager;
@@ -55,5 +56,10 @@ public class DocumentRepository {
         }
 
         return false;
+    }
+
+    public List<Bibliography> getBibliography() {
+        return em.createNamedQuery("Bibliography.all", Bibliography.class)
+                .getResultList();
     }
 }

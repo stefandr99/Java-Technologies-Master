@@ -3,6 +3,7 @@ package com.fii.laboratory_8.laboratory_8_v2.controllers;
 import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
 import com.fii.laboratory_8.laboratory_8_v2.repositories.DocumentRepository;
 import com.fii.laboratory_8.laboratory_8_v2.repositories.UserRepository;
+import com.fii.laboratory_8.laboratory_8_v2.services.GraphService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -17,6 +18,9 @@ public class JAXDocumentController {
 
     @Inject
     UserRepository userRepository;
+
+    @Inject
+    GraphService graphService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,7 +38,7 @@ public class JAXDocumentController {
     @GET
     @Path("/checkCircuit")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Document2> allWithCheck(@DefaultValue("-1") @QueryParam("userId") int userId) {
+    public boolean allWithCheck(@DefaultValue("-1") @QueryParam("userId") int userId) {
         List<Document2> documents;
 
         if(userId == -1)
@@ -42,7 +46,9 @@ public class JAXDocumentController {
         else
             documents = documentRepository.getByUserId(userId);
 
-        return documents;
+        boolean isCircuit = graphService.check(documents);
+
+        return isCircuit;
     }
 
 /*
