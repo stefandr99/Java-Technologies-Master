@@ -1,7 +1,7 @@
 package com.fii.laboratory_8.laboratory_8_v2.services;
 
 import com.fii.laboratory_8.laboratory_8_v2.entities.Bibliography;
-import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
+import com.fii.laboratory_8.laboratory_8_v2.entities.Document;
 import com.fii.laboratory_8.laboratory_8_v2.repositories.DocumentRepository;
 
 import javax.inject.Inject;
@@ -16,11 +16,11 @@ public class GraphService {
 
     Map<Long, List<Long>> adj = new HashMap<>();
 
-    public boolean check(List<Document2> document2List) {
+    public boolean check(List<Document> documentList) {
         List<Bibliography> bibliographies = documentRepository.getBibliography();
 
-        for(Document2 document2 : document2List) {
-            adj.put(document2.getId(), bibliographies.stream().filter(b -> b.getDocumentId().equals(document2.getId()))
+        for(Document document : documentList) {
+            adj.put(document.getId(), bibliographies.stream().filter(b -> b.getDocumentId().equals(document.getId()))
                     .map(Bibliography::getReferenceId)
                     .collect(Collectors.toList()));
         }

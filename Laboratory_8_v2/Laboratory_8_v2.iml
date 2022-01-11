@@ -4,6 +4,7 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
+          <deploymentDescriptor name="glassfish-web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/glassfish-web.xml" />
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
@@ -63,5 +64,14 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.primefaces:primefaces:10.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.json:javax.json-api:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.annotation:javax.annotation-api:1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.config:microprofile-config-api:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.annotation.versioning:1.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.fault-tolerance:microprofile-fault-tolerance-api:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.health:microprofile-health-api:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.metrics:microprofile-metrics-api:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:1.0" level="project" />
   </component>
 </module>

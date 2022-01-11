@@ -1,9 +1,7 @@
 package com.fii.laboratory_8.laboratory_8_v2;
 
-import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
+import com.fii.laboratory_8.laboratory_8_v2.entities.Document;
 
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
@@ -15,7 +13,7 @@ import java.util.Map;
 
 @Provider
 public class CacheFilter implements ContainerResponseFilter {
-    private Map<Integer, List<Document2>> documents = new HashMap<>();
+    private Map<Integer, List<Document>> documents = new HashMap<>();
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {

@@ -1,6 +1,6 @@
 package com.fii.laboratory_8.laboratory_8_v2.controllers;
 
-import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
+import com.fii.laboratory_8.laboratory_8_v2.entities.Document;
 import com.fii.laboratory_8.laboratory_8_v2.repositories.DocumentRepository;
 import com.fii.laboratory_8.laboratory_8_v2.repositories.UserRepository;
 import com.fii.laboratory_8.laboratory_8_v2.services.GraphService;
@@ -24,8 +24,8 @@ public class JAXDocumentController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Document2> all(@DefaultValue("-1") @QueryParam("userId") int userId) {
-        List<Document2> documents;
+    public List<Document> all(@DefaultValue("-1") @QueryParam("userId") int userId) {
+        List<Document> documents;
 
         if(userId == -1)
             documents = documentRepository.get();
@@ -39,7 +39,7 @@ public class JAXDocumentController {
     @Path("/checkCircuit")
     @Produces(MediaType.APPLICATION_JSON)
     public boolean allWithCheck(@DefaultValue("-1") @QueryParam("userId") int userId) {
-        List<Document2> documents;
+        List<Document> documents;
 
         if(userId == -1)
             documents = documentRepository.get();

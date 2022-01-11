@@ -1,4 +1,4 @@
-package com.fii.laboratory_8.laboratory_8_v2.entities;
+package com.laboratory_9.laboratory_9.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,11 +7,11 @@ import java.util.List;
 @Entity
 @Table(name = "documents2")
 @NamedQueries({
-        @NamedQuery(name = "Document2.all", query = "select doc from Document2 doc join doc.user us order by doc.id"),
-        @NamedQuery(name = "Document2.byName", query = "select doc from Document2 doc where doc.name = :name"),
-        @NamedQuery(name = "Document2.byUserId", query = "select doc from Document2 doc join doc.user us where us.id = :userId")
+        @NamedQuery(name = "Document2.all", query = "select doc from Document doc join doc.user us order by doc.id"),
+        @NamedQuery(name = "Document2.byName", query = "select doc from Document doc where doc.name = :name"),
+        @NamedQuery(name = "Document2.byUserId", query = "select doc from Document doc join doc.user us where us.id = :userId")
 })
-public class Document2 implements Serializable {
+public class Document implements Serializable {
     private final static long serialVersionUID = 1L;
 
     @Id
@@ -36,12 +36,12 @@ public class Document2 implements Serializable {
     @JoinTable( name = "bibliography",
             joinColumns = @JoinColumn(name = "documentid"),
             inverseJoinColumns = @JoinColumn(name = "referenceid") )
-    private List<Document2> bibliography;
+    private List<Document> bibliography;
 
-    public Document2() {
+    public Document() {
     }
 
-    public Document2(String name, byte[] bytes, User user, String registrationNumber) {
+    public Document(String name, byte[] bytes, User user, String registrationNumber) {
         this.name = name;
         this.doc = bytes;
         this.user = user;

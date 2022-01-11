@@ -1,7 +1,7 @@
 package com.fii.laboratory_8.laboratory_8_v2.repositories;
 
 import com.fii.laboratory_8.laboratory_8_v2.entities.Bibliography;
-import com.fii.laboratory_8.laboratory_8_v2.entities.Document2;
+import com.fii.laboratory_8.laboratory_8_v2.entities.Document;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,17 +13,17 @@ public class DocumentRepository {
     private EntityManager em;
 
 
-    public void create2(Document2 document) {
+    public void create2(Document document) {
         em.persist(document);
         em.flush();
     }
 
-    public List<Document2> get() {
-        return em.createNamedQuery("Document2.all", Document2.class).getResultList();
+    public List<Document> get() {
+        return em.createNamedQuery("Document2.all", Document.class).getResultList();
     }
 
-    public List<Document2> getByUserId(int userId) {
-        return em.createNamedQuery("Document2.byUserId", Document2.class)
+    public List<Document> getByUserId(int userId) {
+        return em.createNamedQuery("Document2.byUserId", Document.class)
                 .setParameter("userId", userId)
                 .getResultList();
     }
@@ -32,10 +32,10 @@ public class DocumentRepository {
     public boolean delete(int id) {
         Long longId = (long) id;
 
-        Document2 document2 = em.find(Document2.class, longId);
+        Document document = em.find(Document.class, longId);
 
-        if(document2 != null) {
-            em.remove(document2);
+        if(document != null) {
+            em.remove(document);
 
             return true;
         }
@@ -46,7 +46,7 @@ public class DocumentRepository {
     @Transactional
     public boolean update(int id, String name, String registrationNumber) {
         Long longId = (long) id;
-        Document2 doc = em.find(Document2.class, longId);
+        Document doc = em.find(Document.class, longId);
 
         if(doc != null) {
             doc.setName(name);
