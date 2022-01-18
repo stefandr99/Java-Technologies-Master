@@ -74,11 +74,11 @@ public class ResilienceController {
 
         try {
             Integer availability = resilientService.getAvailability();
-            LOGGER.log(Level.FINE, "CoffeeResource#availability() invocation #%d returning successfully", invocationNumber);
+            LOGGER.log(Level.FINE, "Documents#availability() invocation #%d returning successfully", invocationNumber);
             return Response.ok(availability).build();
         } catch (RuntimeException e) {
             String message = e.getClass().getSimpleName() + ": " + e.getMessage();
-            LOGGER.log(Level.SEVERE, "CoffeeResource#availability() invocation #%d failed", invocationNumber);
+            LOGGER.log(Level.SEVERE, "Documents#availability() invocation #%d failed", invocationNumber);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity(message)
                     .type(MediaType.TEXT_PLAIN_TYPE)

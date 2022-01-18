@@ -17,7 +17,7 @@ public class HelloResource {
     public Response hello() {
         Client client = ClientBuilder.newClient();
 
-        WebTarget resource = client.target("http://en1210237.endava.net:8080/lab9-v1/resources/document");
+        WebTarget resource = client.target("http://en1210237.endava.net:8082/lab9-v1/resources/document");
 
         Invocation.Builder request = resource.request();
         request.accept(MediaType.APPLICATION_JSON);

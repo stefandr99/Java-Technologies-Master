@@ -19,14 +19,14 @@ import java.util.Random;
 @ApplicationScoped
 public class MetricController {
 
-    @Inject
+    /*@Inject
     @RegistryType(type = MetricRegistry.Type.APPLICATION)
-    private MetricRegistry metricRegistry;
+    private MetricRegistry metricRegistry;*/
 
     private Counter counter;
 
     @Path("counted")
-    @Timed(name = "timed-request")
+    //@Timed(name = "timed-request")
     @GET
     public Response timedRequest() {
         /*int wait = new Random().nextInt(1000);
@@ -36,7 +36,9 @@ public class MetricController {
             e.printStackTrace();
         }*/
 
-        return Response.ok(metricRegistry.counter("getDocuments").getCount()).build();
+        //return Response.ok(metricRegistry.counter("getDocuments").getCount()).build();
+
+        return null;
     }
 
 
